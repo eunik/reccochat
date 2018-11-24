@@ -1,6 +1,12 @@
 module.exports = (sequelize, DataTypes) => {
-  const Friends = sequelize.define('friends', {
-    userId: {
+  const MatchRelation = sequelize.define('matchRelation', {
+    matchPercentage: {
+      type: DataTypes.INTEGER,
+      validate: {
+        notEmpty: true
+      }
+    },
+    firstUserId: {
       type: DataTypes.INTEGER,
       references: {
         // This is a reference to another model
@@ -11,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
         deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
     }
     },
-    friendId: {
+    secondUserId: {
       type: DataTypes.INTEGER,
       references: {
         // This is a reference to another model
@@ -24,5 +30,5 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
 
-  return Friends;
+  return MatchRelation;
 }
