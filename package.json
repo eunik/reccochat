@@ -2,21 +2,30 @@
   "name": "reccochat",
   "version": "0.1.0",
   "private": true,
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon -L app.js",
+    "test": "jest"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^21.2.1"
+  },
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.18.2",
     "cookie-parser": "^1.4.3",
+    "express": "^4.16.4",
     "express-session": "^1.15.6",
-    "nodemon": "^1.18.6",
+    "nodemon": "^1.18.7",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "pg": "^7.6.1",
+    "pg-hstore": "^2.3.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-scripts": "2.1.1",
-    "sequelize": "^4.41.2"
-  },
-  "scripts": {
-    "start": "nodemon -L app.js"
-  },
-  "main": "app.js"
+    "sequelize": "^4.41.2",
+    "sequelize-cli": "^5.4.0"
+  }
 }

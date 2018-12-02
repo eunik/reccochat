@@ -2,21 +2,21 @@
   "development": {
     "username": "ctp_user",
     "password": "ctp_user",
-    "database": "dev",
+    "database": "reccodb",
     "host": "127.0.0.1",
     "dialect": "postgresql"
   },
   "test": {
     "username": "ctp_user",
     "password": "ctp_user",
-    "database": "dev",
+    "database": "reccodb",
     "host": "127.0.0.1",
     "dialect": "postgresql"
   },
   "production": {
     "username": "ctp_user",
     "password": "ctp_user",
-    "database": "dev",
+    "database": "reccodb",
     "host": "127.0.0.1",
     "dialect": "postgresql"
   }
