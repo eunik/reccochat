@@ -1,5 +1,7 @@
+'use strict';
+
 module.exports = (sequelize, DataTypes) => {
-  const Chats = sequelize.define('chats', {
+  const Chats = sequelize.define('Chats', {
     message: {
       type: DataTypes.STRING,
       validate: {
@@ -10,22 +12,22 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       references: {
         // This is a reference to another model
-        model: Users,
+        model: 'Users',
        // This is the column name of the referenced model
         key: 'id',
        // This declares when to check the foreign key constraint. PostgreSQL only.
-        deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
+        deferrable: sequelize.Deferrable.INITIALLY_IMMEDIATE
     }
     },
     secondUserId: {
       type: DataTypes.INTEGER,
       references: {
         // This is a reference to another model
-        model: Users,
+        model: 'Users',
        // This is the column name of the referenced model
         key: 'id',
        // This declares when to check the foreign key constraint. PostgreSQL only.
-        deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
+        deferrable: sequelize.Deferrable.INITIALLY_IMMEDIATE
     }
     }
   });

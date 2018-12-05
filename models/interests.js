@@ -1,5 +1,7 @@
+'use strict';
+
 module.exports = (sequelize, DataTypes) => {
-  const Interests = sequelize.define('interests', {
+  const Interests = sequelize.define('Interests', {
     interest: {
       type: DataTypes.STRING,
       allowNull: false,
