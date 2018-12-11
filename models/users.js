@@ -1,18 +1,28 @@
 'use strict';
 
 const bcrypt = require('bcrypt-nodejs');
-
+// sudo -u  postgres psql
+// TRUNCATE "Table" RESTART IDENTITY CASCADE
 module.exports = (sequelize, DataTypes) => {
   var Users = sequelize.define('Users', {
-    username: DataTypes.STRING,
-    email: DataTypes.STRING,
-    password: DataTypes.STRING
-  }, {
-    getterMethods: {
-      fullName() {
-        return `${this.username}`;
+    username: {
+      type:DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+      validate: {
+        notEmpty: true
       }
-    }
+    },
+    email: {
+      type:DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+      validate: {
+        notEmpty: true,
+        isEmail: true
+      }
+    },
+    password: DataTypes.STRING
   });
 
   Users.beforeCreate((user) =>

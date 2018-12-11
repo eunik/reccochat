@@ -9,16 +9,16 @@ function passwordsMatch(passwordSubmitted, storedPassword) {
 }
 
 passport.use(new LocalStrategy({
-    usernameField: 'email',
+    usernameField: 'username',
   },
-  (email, password, done) => {
+  (username, password, done) => {
     Users.findOne({
-      where: { email },
+      where: { username },
     }).then((user) => {
       debugger;
 
       if(!user) {
-        return done(null, false, { message: 'Incorrect email.' });
+        return done(null, false, { message: 'Incorrect username.' });
       }
 
       if (passwordsMatch(password, user.password) === false) {
@@ -27,7 +27,7 @@ passport.use(new LocalStrategy({
       }
 
       console.log('\n\ncorrect login!!\n\n')
-      return done(null, user, { message: 'Successfully Logged In!' });
+      return done(null, user, {message: 'Successfully Logged In!' });
     });
   })
 );

@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = (sequelize, DataTypes) => {
-  const MatchRelation = sequelize.define('MatchRelation', {
+  var MatchRelation = sequelize.define('MatchRelation', {
     matchPercentage: {
       type: DataTypes.INTEGER,
       validate: {

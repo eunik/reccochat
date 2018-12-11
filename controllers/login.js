@@ -5,13 +5,17 @@ router.get('/', (req, res) => {
   res.render('login');
 });
 
-// curl -X POST http://localhost:8000/login -b cookie-file.txt -H 'Content-Type: application/json' -d '{"email":"test@test.com", "password":"password"}'
-// curl -d "email=test@test.com&password=password" -X POST http://localhost:8000/login
-router.post('/', (req, res) => {
-  passport.authenticate('local', {
-    successRedirect: '/profile',
-    failureRedirect: '/login',
-  })(req, res);
+// curl -d "username=test&password=password" -X POST http://localhost:8000/login
+router.post('/',(req, res, next) => {
+	passport.authenticate('local',
+	(err, user, info) => {
+		if (err) { return next(err); }
+		if (!user) { return res.json({success: 0, id: null}); }
+		req.logIn(user, (err)=>{
+			if (err) { return next(err); }
+			res.json({success: 1, id: req.user.id});
+		});
+	})(req, res, next);
 });
 
 module.exports = router;
