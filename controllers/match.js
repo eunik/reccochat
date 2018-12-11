@@ -54,7 +54,6 @@ router.post('/generate', (req, res) => {
 											}
 										}).then((matchPercent) => {
 											// We want to create the matched interest
-											console.log(matchPercent.length, myInterest.length);
 											Matches.create({
 												matchPercentage: (matchPercent.length/myInterest.length)*100,
 												firstUserId: user.id,

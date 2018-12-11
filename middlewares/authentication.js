@@ -16,14 +16,9 @@ passport.use(new LocalStrategy({
       where: { username },
     }).then((user) => {
       debugger;
-
-      if(!user) {
-        return done(null, false, { message: 'Incorrect username.' });
-      }
-
-      if (passwordsMatch(password, user.password) === false) {
+      if (!user || passwordsMatch(password, user.password) === false) {
         console.log('\n\nerror match\n\n')
-        return done(null, false, { message: 'Incorrect password.' });
+        return done(null, false, { message: 'Incorrect username or password.' });
       }
 
       console.log('\n\ncorrect login!!\n\n')

@@ -24,6 +24,22 @@ router.post('/create', (req, res) => {
   });
 });
 
+// REMOVING FROM UserInterests
+// curl -d "userId=1&interestId=1" -X DELETE http://localhost:8000/interest/delete/userInterest
+router.delete('/delete/userInterest', (req, res) => {
+  UserInterests.destroy({
+    where: {
+      userId: req.body.userId,
+      interestId: req.body.interestId
+    }
+  }).then(() => {
+    res.json({success:1});
+  }).catch(() =>{
+    res.json({success:0});
+  });
+});
+
+// ADDING FROM INTERESTS NOT UserInterests
 // curl -d "interestCategory=artist&interest=Micheal+Jackson" -X POST http://localhost:8000/interest/add
 router.post('/add', (req, res) => {
   Interests.findOrCreate({where: {
@@ -35,6 +51,36 @@ router.post('/add', (req, res) => {
     } else{
       res.json({success:0, id:null});
     };
+  });
+});
+
+// curl -d "id=1&interestCategory=artist&interest=Janet+Jackson" -X PUT http://localhost:8000/interest/update
+router.put('/update', (req, res) => {
+  Interests.update({
+    interest: req.body.interest,
+    interestCategory: req.body.interestCategory
+  },{
+    where: {
+      id: req.body.id
+    }
+  }).then(interest => {
+    res.json({success:1, id:interest.id, interest:interest.interest, interestCategory:interest.interestCategory})
+    }). catch((err) => {
+      res.json({success:0, id:null, interest:null, interestCategory: null});
+  });
+});
+
+// REMOVING FROM Interests : MAKE SURE NO USERS ARE CONNECTED TO THIS INTEREST
+// curl -d "id=1" -X DELETE http://localhost:8000/interest/delete/interest
+router.delete('/delete/interest', (req, res) => {
+  Interests.destroy({
+    where: {
+      id: req.body.id
+    }
+  }).then(() => {
+    res.json({success:1});
+  }).catch(() =>{
+    res.json({success:0});
   });
 });
 

@@ -2,7 +2,7 @@
 
 const bcrypt = require('bcrypt-nodejs');
 // sudo -u  postgres psql
-// TRUNCATE "Table" RESTART IDENTITY CASCADE
+// TRUNCATE "Users" RESTART IDENTITY CASCADE;
 module.exports = (sequelize, DataTypes) => {
   var Users = sequelize.define('Users', {
     username: {

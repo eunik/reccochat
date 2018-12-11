@@ -1,4 +1,7 @@
 const router = require('express').Router();
+var Sequelize = require('sequelize');
+const Op = Sequelize.Op;
+
 const models = require('../models');
 const Friends = models.Friends;
 
@@ -22,6 +25,26 @@ router.post('/add', (req, res) => {
     } else{
           res.json({success:0, entryId1:null, entryId2: null});
     };
+  });
+});
+
+// curl -d "userId=1&friendId=4" -X DELETE http://localhost:8000/friend/delete
+router.delete('/delete', (req, res) => {
+  Friends.destroy({
+    where: { [Op.or]: [
+      {
+        userId: req.body.userId,
+        friendId: req.body.friendId
+      },
+      {
+        userId: req.body.friendId,
+        friendId: req.body.userId
+      }
+    ]}
+  }).then(() => {
+    res.json({success:1});
+  }).catch(() =>{
+    res.json({success:0});
   });
 });
 

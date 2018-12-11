@@ -16,10 +16,24 @@ router.post('/add', (req, res) => {
     firstUserId: req.body.firstUserId,
     secondUserId: req.body.secondUserId,
     message: req.body.message
-  }).then(entryId=> {
-    res.json({success:1, id:entryId.id});
+  }).then(chat=> {
+    res.json({success:1, id:chat.id});
   }).catch(() =>{
     res.json({success:0, id:null});
+  });
+});
+
+// curl -d "firstUserId=1&secondUserId=4" -X DELETE http://localhost:8000/chat/delete
+router.delete('/delete', (req, res) => {
+  Chats.destroy({
+    where: {
+      firstUserId: req.body.firstUserId,
+      secondUserId: req.body.secondUserId
+      }
+  }).then(() => {
+    res.json({success:1});
+  }).catch(() =>{
+    res.json({success:0});
   });
 });
 
