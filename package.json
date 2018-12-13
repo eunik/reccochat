@@ -4,7 +4,7 @@
   "private": true,
   "main": "app.js",
   "scripts": {
-    "start": "nodemon -L app.js",
+    "start": "node app.js",
     "test": "jest"
   },
   "license": "ISC",
