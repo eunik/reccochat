@@ -1,10 +1,12 @@
 const express = require('express');
 const expressSession = require('express-session');
 const passport = require('./middlewares/authentication');
+const cors = require('cors')
 
 const PORT = process.env.PORT || 3000;
 
 const app = express();
+app.use(cors());
 
 // Access Body Data
 const bodyParser = require('body-parser');
