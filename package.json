@@ -11,6 +11,10 @@
   "devDependencies": {
     "jest": "^21.2.1"
   },
+    "engines": {
+    "node": "8.11.4",
+    "npm": "6.4.1"
+  },
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.2",
