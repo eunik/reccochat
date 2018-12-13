@@ -2,9 +2,7 @@ const express = require('express');
 const expressSession = require('express-session');
 const passport = require('./middlewares/authentication');
 
-var port = process.env.PORT || 3000;
-
-app.use(express.static(__dirname + '/public'));
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 
