@@ -2,7 +2,7 @@ const express = require('express');
 const expressSession = require('express-session');
 const passport = require('./middlewares/authentication');
 
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 

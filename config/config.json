@@ -14,10 +14,6 @@
     "dialect": "postgresql"
   },
   "production": {
-    "username": "ctp_user",
-    "password": "ctp_user",
-    "database": "reccodb",
-    "host": "127.0.0.1",
-    "dialect": "postgresql"
+    "use_env_variable": "DATABASE_URL"
   }
 }
